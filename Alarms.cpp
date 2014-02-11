@@ -70,6 +70,12 @@ void alarmHandler(void){
     else firstrun = 0;
   #endif  
      
+  #if defined(ARMEDBEEP)
+    static uint8_t last_armed = 0;
+    if (f.ARMED != last_armed) alarmArray[0] = 1;
+    last_armed = f.ARMED;
+  #endif
+
   #if defined(FAILSAFE)
     if ( failsafeCnt > (5*FAILSAFE_DELAY) && f.ARMED) {
       alarmArray[1] = 1;                                                                   //set failsafe warning level to 1 while landing
