@@ -493,7 +493,7 @@ void evaluateCommand() {
    case MSP_MOTOR_PINS:
      s_struct((uint8_t*)&PWM_PIN,8);
      break;
-   #if defined(USE_MSP_WP)    
+   #if GPS && defined(USE_MSP_WP)
    case MSP_WP:
      {
        int32_t lat = 0,lon = 0;
