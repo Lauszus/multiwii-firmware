@@ -441,7 +441,7 @@
 
   /* only enable any of this if you must change the default pin assignment, e.g. your board does not have a specific pin */
   /* you may need to change PINx and PORTx plus #shift according to the desired pin! */
-  //#define OVERRIDE_V_BATPIN                   A0 // instead of A3    // Analog PIN 3
+  #define OVERRIDE_V_BATPIN                     A11 // instead of A3    // Analog PIN 3
 
   //#define OVERRIDE_PSENSORPIN                 A1 // instead of A2    // Analog PIN 2
 
@@ -450,9 +450,14 @@
   //#define OVERRIDE_LEDPIN_OFF                 PORTC &= ~(1<<1); // PORTB &= ~(1<<5);
   //#define OVERRIDE_LEDPIN_ON                  PORTC |= 1<<1;    // was PORTB |= (1<<5);
 
-  //#define OVERRIDE_BUZZERPIN_PINMODE          pinMode (A2, OUTPUT); // use A2 instead of d8
-  //#define OVERRIDE_BUZZERPIN_ON               PORTC |= 1<<2 //PORTB |= 1;
-  //#define OVERRIDE_BUZZERPIN_OFF              PORTC &= ~(1<<2); //PORTB &= ~1;
+  #define OVERRIDE_BUZZERPIN_PINMODE            pinMode (28, OUTPUT); // use A2 instead of d8
+  #define OVERRIDE_BUZZERPIN_ON                 PORTA |= 1<<6 //PORTB |= 1;
+  #define OVERRIDE_BUZZERPIN_OFF                PORTA &= ~(1<<6); //PORTB &= ~1;
+
+  #define OVERRIDE_STABLEPIN_PINMODE            pinMode (A13, OUTPUT);
+  #define OVERRIDE_STABLEPIN_ON                 PORTK |= 1<<5
+  #define OVERRIDE_STABLEPIN_OFF                PORTK &= ~(1<<5);
+
 
 /*************************************************************************************************/
 /*****************                                                                 ***************/
@@ -809,7 +814,7 @@
        with R1=33k and R2=51k
        vbat = [0;1023]*16/VBATSCALE
        must be associated with #define BUZZER ! */
-    //#define VBAT              // uncomment this line to activate the vbat code
+    #define VBAT              // uncomment this line to activate the vbat code
     #define VBATSCALE       131 // (*) (**) change this value if readed Battery voltage is different than real voltage
     #define VBATNOMINAL     126 // 12,6V full battery nominal voltage - only used for lcd.telemetry
     #define VBATLEVEL_WARN1 107 // (*) (**) 10,7V

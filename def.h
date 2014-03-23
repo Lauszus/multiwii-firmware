@@ -1977,6 +1977,14 @@
     #define BUZZERPIN_ON      OVERRIDE_BUZZERPIN_ON
     #define BUZZERPIN_OFF     OVERRIDE_BUZZERPIN_OFF
   #endif
+  #ifdef OVERRIDE_STABLEPIN_PINMODE
+    #undef STABLEPIN_PINMODE
+    #undef STABLEPIN_ON
+    #undef STABLEPIN_OFF
+    #define STABLEPIN_PINMODE OVERRIDE_STABLEPIN_PINMODE
+    #define STABLEPIN_ON      OVERRIDE_STABLEPIN_ON
+    #define STABLEPIN_OFF     OVERRIDE_STABLEPIN_OFF
+  #endif
 
   /*********  sensors orientation - possibly overriding board defaults  *****/
   #ifdef FORCE_GYRO_ORIENTATION
